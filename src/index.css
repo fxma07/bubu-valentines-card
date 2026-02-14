@@ -6,13 +6,34 @@
   box-sizing: border-box;
 }
 
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
 html, body, #root {
   height: 100%;
+  min-height: 100dvh;
 }
 
 body {
   margin: 0;
   overflow-x: hidden;
+  /* Safe area for notched phones */
+  padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+}
+
+/* Card size: responsive so it works before JS and on deploy */
+.card-container,
+.card-inner {
+  width: min(400px, 92vw);
+  height: min(500px, 82vh, 125vw);
+  max-width: 92vw;
+}
+.card-container {
+  max-height: 85vh;
+}
+.card-inner {
+  max-height: 85vh;
 }
 
 /* Preserve 3D for children during flip */
